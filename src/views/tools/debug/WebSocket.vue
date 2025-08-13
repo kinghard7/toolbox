@@ -174,7 +174,7 @@
                       @click="sendMessage" 
                       :disabled="!isConnected || !messageConfig.content.trim()"
                     >
-                      <el-icon><Send /></el-icon>
+                      <el-icon><Position /></el-icon>
                       发送
                     </el-button>
                     <el-button @click="clearMessage">
@@ -283,7 +283,7 @@
 <script setup lang="ts">
 import { ref, computed, onMounted, onUnmounted } from 'vue'
 import { ElMessage } from 'element-plus'
-import { Connection, Close, Delete, Send, Document } from '@element-plus/icons-vue'
+import { Connection, Close, Delete, Position, Document } from '@element-plus/icons-vue'
 import ToolContainer from '@/components/base/ToolContainer.vue'
 
 // 连接状态

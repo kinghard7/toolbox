@@ -16,7 +16,7 @@
         
         <div class="action-buttons">
           <el-button type="primary" @click="sendRequest" :disabled="isLoading">
-            <el-icon><Send /></el-icon>
+            <el-icon><Position /></el-icon>
             {{ isLoading ? '发送中...' : '发送请求' }}
           </el-button>
           <el-button @click="clearRequest">
@@ -282,9 +282,9 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed, onMounted } from 'vue'
+import { ref, computed, onMounted, watch } from 'vue'
 import { ElMessage } from 'element-plus'
-import { Send, Delete, Document } from '@element-plus/icons-vue'
+import { Position, Delete, Document } from '@element-plus/icons-vue'
 import ToolContainer from '@/components/base/ToolContainer.vue'
 
 // 请求方法

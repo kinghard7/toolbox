@@ -343,7 +343,6 @@
                 <div
                   v-for="preset in mobileAppPresets"
                   :key="preset.name"
-                  :key="preset.name"
                   class="preset-item"
                   @click="useSizePreset(preset)"
                 >

@@ -24,6 +24,7 @@
     "highlight.js": "^11.9.0",
     "js-yaml": "^4.1.0",
     "jsonwebtoken": "^9.0.2",
+    "jszip": "^3.10.1",
     "marked": "^11.1.0",
     "monaco-editor": "^0.45.0",
     "papaparse": "^5.4.1",
