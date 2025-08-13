@@ -523,7 +523,7 @@ const addCommonHeaders = () => {
     { key: 'Content-Type', value: 'application/json' },
     { key: 'Accept', value: 'application/json' },
     { key: 'User-Agent', value: 'HTTP-Client-Tool/1.0' },
-    { key: 'Authorization', value: 'Bearer your-token-here' }
+    { key: 'Authorization', value: 'Bearer [your-token]' }
   ]
   
   commonHeaders.forEach(header => {

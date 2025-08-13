@@ -334,9 +334,9 @@ const pasteTestText = async () => {
 const loadSampleText = () => {
   testText.value = `Hello World! 123
 联系方式：
-邮箱：test@example.com, admin@domain.org
-手机：13812345678, 15987654321
-网站：https://www.example.com, http://test.org
+邮箱：example@test.com, sample@demo.org
+手机：13800000000, 15900000000
+网站：https://www.example.com, http://demo.org
 日期：2024-01-15, 2023-12-31
 IP地址：192.168.1.1, 10.0.0.1`
   ElMessage.success('已加载示例文本')
