@@ -57,6 +57,16 @@
         <el-button :icon="QuestionFilled" size="small" circle @click="showHelp" />
       </el-tooltip>
       
+      <!-- 主题切换 -->
+      <el-tooltip :content="isDark ? '切换到亮色模式' : '切换到暗色模式'">
+        <el-button
+          :icon="isDark ? Sunny : Moon"
+          size="small"
+          circle
+          @click="toggleTheme"
+        />
+      </el-tooltip>
+      
       <!-- GitHub -->
       <el-tooltip content="GitHub 仓库">
         <el-button size="small" circle @click="openGitHub">
@@ -75,6 +85,7 @@
 import { computed } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { useAppStore } from '@/stores/app'
+import { useDark, useToggle } from '@vueuse/core'
 import { getToolById, categoryConfig } from '@/config/tools'
 import type { ToolCategory } from '@/types'
 import dayjs from 'dayjs'
@@ -85,7 +96,9 @@ import {
   StarFilled,
   Clock,
   Delete,
-  QuestionFilled
+  QuestionFilled,
+  Sunny,
+  Moon
 } from '@element-plus/icons-vue'
 
 dayjs.extend(relativeTime)
@@ -94,6 +107,9 @@ dayjs.locale('zh-cn')
 const route = useRoute()
 const router = useRouter()
 const appStore = useAppStore()
+
+const isDark = useDark()
+const toggleDark = useToggle(isDark)
 
 // 计算属性
 const currentTool = computed(() => {
@@ -173,8 +189,12 @@ const showHelp = () => {
   )
 }
 
+const toggleTheme = () => {
+  toggleDark()
+}
+
 const openGitHub = () => {
-  window.open('https://github.com/your-username/toolbox', '_blank')
+  window.open('https://github.com/kinghard7/toolbox', '_blank')
 }
 </script>
 
@@ -188,7 +208,7 @@ const openGitHub = () => {
   
   .header-left {
     .el-breadcrumb {
-      font-size: 14px;
+      font-size: 20px;
     }
   }
   
@@ -196,6 +216,31 @@ const openGitHub = () => {
     display: flex;
     align-items: center;
     gap: 8px;
+    
+    .el-button {
+      width: 30px !important;
+      height: 30px !important;
+      min-width: 30px !important;
+      min-height: 30px !important;
+      
+      .el-icon {
+        font-size: 16px;
+        color: #333 !important;
+      }
+      
+      svg {
+        width: 16px;
+        height: 16px;
+        color: #333 !important;
+      }
+      
+      &:hover {
+        .el-icon,
+        svg {
+          color: #000 !important;
+        }
+      }
+    }
   }
 }
 
