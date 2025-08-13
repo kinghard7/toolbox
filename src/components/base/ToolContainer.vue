@@ -8,6 +8,14 @@
       </div>
       
       <div class="tool-header-actions">
+        <!-- 收藏按钮 -->
+        <el-button
+          v-if="favorite !== undefined"
+          :type="favorite ? 'warning' : 'default'"
+          :icon="favorite ? 'StarFilled' : 'Star'"
+          @click="$emit('toggle-favorite')"
+          :title="favorite ? '取消收藏' : '收藏工具'"
+        />
         <slot name="header-actions" />
       </div>
     </div>
@@ -28,9 +36,15 @@
 interface Props {
   title: string
   description?: string
+  favorite?: boolean
 }
 
-defineProps<Props>()
+const props = defineProps<Props>()
+
+defineEmits<{
+  'toggle-favorite': []
+}>()
+
 defineSlots<{
   default: () => any
   'header-actions': () => any

@@ -100,7 +100,7 @@ const includeSpecialChars = ref(true)
 const errorMessage = ref('')
 
 // 收藏功能
-const isFavorite = computed(() => appStore.favoriteTools.includes('html-entity'))
+const isFavorite = computed(() => appStore.favorites.includes('html-entity'))
 const toggleFavorite = () => {
   appStore.toggleFavorite('html-entity')
 }
