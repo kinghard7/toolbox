@@ -1,0 +1,259 @@
+// 全局样式
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background-attachment: fixed;
+  overflow-x: hidden;
+}
+
+// 主应用容器增强
+#app {
+  position: relative;
+  min-height: 100vh;
+  
+  // 动态背景粒子效果
+  &::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+      radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.3) 0%, transparent 50%),
+      radial-gradient(circle at 80% 20%, rgba(255, 118, 117, 0.3) 0%, transparent 50%),
+      radial-gradient(circle at 40% 40%, rgba(255, 177, 153, 0.3) 0%, transparent 50%);
+    animation: float 20s ease-in-out infinite;
+    pointer-events: none;
+    z-index: -1;
+  }
+  
+  // 毛玻璃背景层
+  &::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(1px);
+    pointer-events: none;
+    z-index: -1;
+  }
+}
+
+// 背景动画
+@keyframes float {
+  0%, 100% {
+    transform: translate(0px, 0px) rotate(0deg);
+  }
+  33% {
+    transform: translate(30px, -30px) rotate(120deg);
+  }
+  66% {
+    transform: translate(-20px, 20px) rotate(240deg);
+  }
+}
+
+// 滚动条样式
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--el-bg-color-page);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--el-border-color);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--el-border-color-dark);
+}
+
+// 代码编辑器样式
+.monaco-editor {
+  .margin {
+    background-color: var(--el-bg-color) !important;
+  }
+  
+  .monaco-editor-background {
+    background-color: var(--el-bg-color) !important;
+  }
+}
+
+// 工具容器样式
+.tool-container {
+  padding: 20px;
+  
+  .tool-header {
+    margin-bottom: 20px;
+    
+    .tool-title {
+      font-size: 24px;
+      font-weight: 600;
+      color: var(--el-text-color-primary);
+      margin-bottom: 8px;
+    }
+    
+    .tool-description {
+      color: var(--el-text-color-secondary);
+      font-size: 14px;
+    }
+  }
+  
+  .tool-content {
+    .el-card {
+      margin-bottom: 20px;
+      
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+}
+
+// 代码高亮样式
+.hljs {
+  background: var(--el-bg-color) !important;
+  color: var(--el-text-color-primary) !important;
+}
+
+// 响应式
+@media (max-width: 768px) {
+  .tool-container {
+    padding: 16px;
+  }
+  
+  .el-aside {
+    width: 200px !important;
+  }
+}
+
+// 暗色主题特殊处理
+.dark {
+  .monaco-editor {
+    .margin {
+      background-color: #1e1e1e !important;
+    }
+    
+    .monaco-editor-background {
+      background-color: #1e1e1e !important;
+    }
+  }
+}
+
+// 工具卡片样式
+.tool-card {
+  border: 1px solid var(--el-border-color-light);
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 16px;
+  background: var(--el-bg-color);
+  cursor: pointer;
+  transition: all 0.3s;
+  
+  &:hover {
+    border-color: var(--el-color-primary);
+    box-shadow: 0 2px 12px 0 var(--el-box-shadow-light);
+  }
+  
+  .tool-card-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+    
+    .tool-icon {
+      font-size: 20px;
+      margin-right: 12px;
+      color: var(--el-color-primary);
+    }
+    
+    .tool-name {
+      font-size: 16px;
+      font-weight: 500;
+      color: var(--el-text-color-primary);
+      flex: 1;
+    }
+    
+    .tool-favorite {
+      color: var(--el-text-color-placeholder);
+      cursor: pointer;
+      
+      &.is-favorite {
+        color: var(--el-color-warning);
+      }
+    }
+  }
+  
+  .tool-description {
+    color: var(--el-text-color-secondary);
+    font-size: 14px;
+    margin-bottom: 8px;
+  }
+  
+  .tool-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    
+    .tool-tag {
+      background: var(--el-color-primary-light-8);
+      color: var(--el-color-primary);
+      font-size: 12px;
+      padding: 2px 6px;
+      border-radius: 4px;
+    }
+  }
+}
+
+// 分类标题样式
+.category-title {
+  display: flex;
+  align-items: center;
+  margin: 20px 0 16px 0;
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--el-text-color-primary);
+  
+  .category-icon {
+    margin-right: 8px;
+  }
+}
+
+// 搜索框样式
+.search-box {
+  margin-bottom: 20px;
+  
+  .el-input {
+    max-width: 400px;
+  }
+}
+
+// 空状态样式
+.empty-state {
+  text-align: center;
+  padding: 60px 20px;
+  color: var(--el-text-color-secondary);
+  
+  .empty-icon {
+    font-size: 48px;
+    margin-bottom: 16px;
+    color: var(--el-text-color-placeholder);
+  }
+  
+  .empty-text {
+    font-size: 16px;
+  }
+}
